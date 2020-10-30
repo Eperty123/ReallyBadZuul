@@ -1,13 +1,15 @@
+package bll;
+
 import java.util.HashMap;
 import java.util.Set;
 
 /**
- * Class Room - a room in an adventure game.
+ * Class bll.Room - a room in an adventure game.
  * <p>
  * This class is part of the "World of Zuul" application.
  * "World of Zuul" is a very simple, text based adventure game.
  * <p>
- * A "Room" represents one location in the scenery of the game.  It is
+ * A "bll.Room" represents one location in the scenery of the game.  It is
  * connected to other rooms via exits.  The exits are labelled north,
  * east, south, west.  For each direction, the room stores a reference
  * to the neighboring room, or null if there is no exit in that direction.
@@ -80,7 +82,7 @@ public class Room {
      * @return The description of the room.
      */
     public String getDescription() {
-        return String.format("You are %s", description);
+        return description;
     }
 
     /**

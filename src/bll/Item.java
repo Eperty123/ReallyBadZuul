@@ -1,3 +1,5 @@
+package bll;
+
 /**
  * The item class.
  *
@@ -11,22 +13,38 @@ public class Item {
     private double weight;
 
     /**
-     * Create a new instance of the Item class.
+     * Create a new instance of the bll.Item class.
      */
     public Item() {
 
     }
 
+    /**
+     * Create a new instance of the bll.Item class with the given name.
+     */
     public Item(String name) {
         this.name = name;
         weight = 1.0f;
     }
 
+    /**
+     * Create a new instance of the bll.Item class with the given name and weight.
+     *
+     * @param name   The name of the item.
+     * @param weight The weight of the item.
+     */
     public Item(String name, double weight) {
         this.name = name;
         this.weight = weight;
     }
 
+    /**
+     * Create a new instance of the bll.Item class with the given name, description and weight.
+     *
+     * @param name        The name of the item.
+     * @param description The description of the item.
+     * @param weight      The weight of the item.
+     */
     public Item(String name, String description, double weight) {
         this.name = name;
         this.description = description;

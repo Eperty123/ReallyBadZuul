@@ -12,7 +12,7 @@ This project is a simple framework for an adventure game. In this version,
 it has a few rooms and the ability for a player to walk between these rooms.
 That's all.
 
-To start this application, create an instance of class "Game" and call its
+To start this application, create an instance of class "bll.Game" and call its
 "play" method.
 
 This version of the game contains some very bad class design. It should NOT

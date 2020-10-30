@@ -1,3 +1,5 @@
+package bll;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -8,7 +10,7 @@ import java.util.Scanner;
  * This parser reads user input and tries to interpret it as an "Adventure"
  * command. Every time it is called it reads a line from the terminal and
  * tries to interpret the line as a two word command. It returns the command
- * as an object of class Command.
+ * as an object of class bll.Command.
  * <p>
  * The parser has a set of known command words. It checks user input against
  * the known commands, and if the input is not one of the known commands, it
@@ -18,14 +20,12 @@ import java.util.Scanner;
  * @version 2020.10.30
  */
 public class Parser {
-    private CommandWords commands;  // holds all valid command words
     private Scanner reader;         // source of command input
 
     /**
      * Create a parser to read from the terminal window.
      */
     public Parser() {
-        commands = new CommandWords();
         reader = new Scanner(System.in);
     }
 
@@ -50,6 +50,7 @@ public class Parser {
 
         // Loop through all the words.
         while (tokenizer.hasNext()) {
+            // Get the current word.
             String word = tokenizer.next();
 
             //Get the command words from the index 0 (first word).
@@ -66,19 +67,9 @@ public class Parser {
             index++;
         }
 
-        // Get the command words.
-/*        if (tokenizer.hasNext()) {
-            word1 = tokenizer.next();      // get first word
-            if (tokenizer.hasNext()) {
-                word2 = tokenizer.next();      // get second word
-                // note: we just ignore the rest of the input line.
-
-            }
-        }*/
-
         // Now check whether this word is known. If so, create a command
         // with it. If not, create a "null" command (for unknown command).
-        if (commands.isCommand(word1)) {
+        if (CommandWord.Parse(word1) != CommandWord.UNKNOWN) {
             return new Command(word1, word2, String.join(" ", restWords));
         } else {
             return new Command(null, word2);
@@ -87,6 +78,6 @@ public class Parser {
     }
 
     public String getCommands() {
-        return commands.getAllCommands();
+        return CommandWord.getAllCommands();
     }
 }
