@@ -65,12 +65,14 @@ public class Room {
         String returnString = "Exits: ";
         Set<String> keys = exits.keySet();
         int index = 0;
-        for (String exit : keys) {
-            index++;
-            if (index != keys.size())
-                returnString += String.format("%s, ", exit);
-            else returnString += String.format("%s.", exit);
-        }
+        if (keys.size() > 0) {
+            for (String exit : keys) {
+                index++;
+                if (index != keys.size())
+                    returnString += String.format("%s, ", exit);
+                else returnString += String.format("%s.", exit);
+            }
+        } else returnString += "none.";
         return returnString;
     }
 
@@ -118,12 +120,14 @@ public class Room {
         String returnString = "Items: ";
         Set<String> keys = items.keySet();
         int index = 0;
-        for (String item : keys) {
-            index++;
-            if (index != keys.size())
-                returnString += String.format("%s, ", item);
-            else returnString += String.format("%s.", item);
-        }
+        if (keys.size() > 0) {
+            for (String item : keys) {
+                index++;
+                if (index != keys.size())
+                    returnString += String.format("%s, ", item);
+                else returnString += String.format("%s.", item);
+            }
+        } else returnString += "none.";
         return returnString;
     }
 

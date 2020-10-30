@@ -160,8 +160,9 @@ public class Game {
      * the new room, otherwise print an error message.
      */
     private void look() {
-
-        print(String.format("You look around and find...\n%s\n%s", currentRoom.getExitString(), currentRoom.getItemString()));
+        if (currentRoom != null)
+            print(String.format("You look around and find...\n%s\n%s", currentRoom.getExitString(), currentRoom.getItemString()));
+        else print("You're surrounded by darkness and need to try your way out of it.");
     }
 
     /**
@@ -174,7 +175,7 @@ public class Game {
             return;
         }
 
-        String item = command.getSecondWord();
+        String item = command.getRestWord();
 
         // Try to leave current room.
         Item foundItem = currentRoom.getItem(item);

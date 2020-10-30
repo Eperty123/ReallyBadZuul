@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -13,8 +14,8 @@ import java.util.Scanner;
  * the known commands, and if the input is not one of the known commands, it
  * returns a command object that is marked as an unknown command.
  *
- * @author Michael Kölling and David J. Barnes
- * @version 2011.07.31
+ * @author Carlo De Leon, Michael Kölling and David J. Barnes
+ * @version 2020.10.30
  */
 public class Parser {
     private CommandWords commands;  // holds all valid command words
@@ -39,24 +40,50 @@ public class Parser {
         System.out.print("> ");     // print prompt
 
         inputLine = reader.nextLine();
-
+        ArrayList<String> restWords = new ArrayList<>();
         // Find up to two words on the line.
         Scanner tokenizer = new Scanner(inputLine);
-        if (tokenizer.hasNext()) {
+
+        // We use the index to determine where we are
+        // in the word array.
+        int index = 0;
+
+        // Loop through all the words.
+        while (tokenizer.hasNext()) {
+            String word = tokenizer.next();
+
+            //Get the command words from the index 0 (first word).
+            if (index == 0) word1 = word;
+                // then the next (second word).
+            else if (index == 1) word2 = word;
+
+            // Get the rest of the input once we get past
+            // the command word.
+            if (index > 0) restWords.add(word);
+
+            // We must have the index increment at the bottom
+            // to ensure the command words get registered properly.
+            index++;
+        }
+
+        // Get the command words.
+/*        if (tokenizer.hasNext()) {
             word1 = tokenizer.next();      // get first word
             if (tokenizer.hasNext()) {
                 word2 = tokenizer.next();      // get second word
                 // note: we just ignore the rest of the input line.
+
             }
-        }
+        }*/
 
         // Now check whether this word is known. If so, create a command
         // with it. If not, create a "null" command (for unknown command).
         if (commands.isCommand(word1)) {
-            return new Command(word1, word2);
+            return new Command(word1, word2, String.join(" ", restWords));
         } else {
             return new Command(null, word2);
         }
+
     }
 
     public String getCommands() {

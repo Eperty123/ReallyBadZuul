@@ -13,13 +13,15 @@
  * <p>
  * If the command had only one word, then the second word is <null>.
  *
- * @author Michael Kölling and David J. Barnes
- * @version 2011.07.31
+ * @author Carlo De Leon, Michael Kölling and David J. Barnes
+ * @version 2020.10.30
  */
 
 public class Command {
     private String commandWord;
     private String secondWord;
+    private String restWord;
+
 
     /**
      * Create a command object. First and second word must be supplied, but
@@ -32,6 +34,12 @@ public class Command {
     public Command(String firstWord, String secondWord) {
         commandWord = firstWord;
         this.secondWord = secondWord;
+    }
+
+    public Command(String firstWord, String secondWord, String restWord) {
+        commandWord = firstWord;
+        this.secondWord = secondWord;
+        this.restWord = restWord;
     }
 
     /**
@@ -50,6 +58,13 @@ public class Command {
      */
     public String getSecondWord() {
         return secondWord;
+    }
+
+    /**
+     * @return Return the rest of the command. This can be used to get a parameter that contains spaces.
+     */
+    public String getRestWord() {
+        return restWord;
     }
 
     /**
