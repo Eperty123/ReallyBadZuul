@@ -43,7 +43,7 @@ public class Game {
         lab.setExit("west", outside);
         outside.setExit("south", lab);
 
-        lab.addItem("iPhone X", "Who leaves an expensive phone like this?", 1.5);
+        lab.addItem("iPhone X", "Who leaves behind an expensive phone like this?", 1.5);
         outside.addItem("Note", "\"You will never escape this hell hole, bro.\"", 1.5);
 
 
